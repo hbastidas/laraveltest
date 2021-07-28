@@ -25,6 +25,20 @@ class PruebaController extends Controller
     $datajson=$response->json();
     return $response->json();
   }
+  
+  private function preprocessdata($data, $search=null){
+    $words=array_count_values(str_word_count($data, 1));
+    $word=array();
+    
+    if($search==null){
+      return $words;
+    }else{
+      if(!empty($words[$search])){
+        $word[$search]=$words[$search];
+      }
+      return $word;
+    }
+  }
   /**
    * Show the my laraveltest page form
    *
