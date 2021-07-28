@@ -8,6 +8,14 @@ use Illuminate\Support\Facades\Http;
 class PruebaController extends Controller
 {
   /**
+   * Create a new controller instance.
+   *
+   * @return void
+   */
+  public function __construct()
+  {
+  }
+  /**
    * Show the my laraveltest page form
    *
    * @return \Illuminate\Http\Response
