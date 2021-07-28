@@ -14,6 +14,16 @@ class PruebaController extends Controller
    */
   public function __construct()
   {
+    $this->apiurl="https://jsonplaceholder.typicode.com";
+  }
+  
+  /*
+  make get to api
+  */
+  private function getdata($endpoint, $id=null){
+    $response = Http::get($this->apiurl.$endpoint);
+    $datajson=$response->json();
+    return $response->json();
   }
   /**
    * Show the my laraveltest page form
