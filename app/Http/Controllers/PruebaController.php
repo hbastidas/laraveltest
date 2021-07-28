@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
 
 class PruebaController extends Controller
 {
@@ -45,9 +46,16 @@ class PruebaController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
-  public function app($word=null)
+  public function app(Request $request, $word=null)
   {
-      
+      $download=false;
+      if(!empty($request->input('word'))){
+        //redirect
+        //return redirect('/search/'.$request->input('word'));
+        $word=$request->input('word');
+        $download=true;
+      }
+
       $dataposts=$this->getdata("/posts");
       $datausers=$this->getdata("/users");
       
@@ -80,7 +88,15 @@ class PruebaController extends Controller
         $data[$userId]['posts'][$id]=array("title"=>$title, "body"=>$body, "utitle"=>$wordsontitle , "ubody"=>$this->preprocessdata($body,$word), "relevance"=>$relevance);
       }
       
-      return response()->json($data);
+      if($download){
+        $jsongFile = time() . '_file.json';
+        Storage::disk('local')->put($jsongFile,  json_encode($data,JSON_PRETTY_PRINT));
+        return Storage::download($jsongFile);
+      }else{
+        return response()->json($data);
+      }
+      
+      
 
   }
   

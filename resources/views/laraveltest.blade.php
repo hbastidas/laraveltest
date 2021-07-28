@@ -25,7 +25,33 @@
     </head>
     <body class="antialiased">
       
-      
+      <form class="form-horizontal" action="/search">
+      <fieldset>
+
+      <!-- Form Name -->
+      <legend>Busqueda de ocurrencias</legend>
+
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="word">Palabra</label>  
+        <div class="col-md-4">
+        <input id="word" name="word" type="text" placeholder="" class="form-control input-md" required="">
+        <span class="help-block">palabra a buscar</span>  
+        </div>
+      </div>
+
+      <!-- Button -->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="singlebutton"></label>
+        <div class="col-md-4">
+          <button id="singlebutton"  class="btn btn-default">Buscar</button>
+        </div>
+      </div>
+
+      </fieldset>
+      </form>
+
+
       
       
       
