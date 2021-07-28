@@ -14,5 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'PruebaController@welcome');
+//a view to test form
+Route::get('/laraveltest', 'PruebaController@laraveltest');
 //a laravel welcome initial app
 Route::get('/welcome', 'PruebaController@welcome');
